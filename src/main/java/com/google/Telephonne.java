@@ -1,10 +1,10 @@
 package com.google;
 
-public class Telephonne {
-    public String name;
-    public int stockage;
+public abstract class Telephonne {
+    private String name;
+    private int stockage;
     private int ram;
-    public int pixsel;
+    private int pixsel;
 
     public Telephonne(String name, int stockage, int ram, int pixsel) {
         this.name = name;
@@ -13,30 +13,61 @@ public class Telephonne {
         this.pixsel = pixsel;
     }
 
+    @Override
     public String toString() {
-        return "name : " + this.name + " stockage : " + this.stockage + " this.ram : " + this.ram + " pixels : " + this.pixsel;
+        return "Telephonne{" +
+                "name='" + name + '\'' +
+                ", stockage=" + stockage +
+                ", ram=" + ram +
+                ", pixsel=" + pixsel +
+                '}';
     }
 
-    public boolean isRamValid() {
-        if (this.ram == 4 || this.ram == 16 || this.ram == 32 || this.ram == 64) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStockage() {
+        return stockage;
+    }
+
+    public void setStockage(int stockage) {
+        this.stockage = stockage;
     }
 
     public int getRam() {
-        return this.ram;
+        return ram;
     }
 
     public void setRam(int ram) {
-        if (ram == 4 || ram == 16 || ram == 32 || ram == 64) {
-            this.ram = ram;
-        }
-        else {
-            throw new Error("Invalid RAM value");
-        }
+        this.ram = ram;
+    }
+
+    public int getPixsel() {
+        return pixsel;
+    }
+
+    public void setPixsel(int pixsel) {
+        this.pixsel = pixsel;
+    }
+
+    //    public void installApp(String appName) {
+//        if (brand.equals("samsung")) {
+//            installAppAndroid(appName);
+//        }
+//        else installAppIos(appName);
+//    }
+
+    private void installAppAndroid(String appName) {
+        System.out.println("Installing " + appName + " With play store " + " in " + name);
+    }
+
+    private void installAppIos(String appName) {
+        System.out.println("Installing " + appName + " With app store " + " In " + name);
     }
 
 }
