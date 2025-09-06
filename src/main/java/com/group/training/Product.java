@@ -1,9 +1,34 @@
 package com.group.training;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import javax.annotation.processing.Generated;
+
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private Double price;
     private int quantity;
+
+    public Product() {
+
+    }
+
+    public Product(String name, Double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public Double getPrice() {
         return price;
@@ -29,11 +54,5 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(String name, Double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
 
-
-    }
 }

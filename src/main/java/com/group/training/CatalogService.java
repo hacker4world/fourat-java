@@ -1,41 +1,42 @@
 package com.group.training;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CatalogService {
-    private ArrayList<Product> products = new ArrayList<>();
 
-    public CatalogService() {
-        products.add(new Product("iphpne",1899.0,99));
-        products.add(new Product("samsung",1200.0,23));
-        products.add(new Product("oppo",1300.0,203));
+    private ProductRepository productRepository;
+
+    @Autowired
+    public CatalogService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
-    public ArrayList<Product> getAllProd() {
-        return products;
+    public List<Product> getAllProd() {
+        return productRepository.findAll();
     }
 
-    public ArrayList<Product> addProduct() {
-        products.add(new Product("htc",209.0,1));
-        return products;
+    public String addProduct(Product product) {
+        Product newProduct = new Product(product.getName(), product.getPrice(), product.getQuantity());
+        productRepository.save(newProduct);
+        return "Product added successfully";
     }
-
-    public ArrayList<Product> updateProduct() {
-        products.get(1).setPrice(1550.0);
-        return products;
-    }
-
-    public ArrayList<Product> deleteProduct() {
-        products.remove(2);
-        return products;
-    }
-
+//
+//    public ArrayList<Product> updateProduct(ProductRequest product) {
+//        products.get(product.getIndex()).setName(product.getName());
+//        products.get(product.getIndex()).setPrice(product.getPrice());
+//        products.get(product.getIndex()).setQuantity(product.getQuantity());
+//        return products;
+//    }
+//
+//    public ArrayList<Product> deleteProduct(ProductRequest product) {
+//        products.remove(product.getIndex());
+//        return products;
+//    }
 
 }

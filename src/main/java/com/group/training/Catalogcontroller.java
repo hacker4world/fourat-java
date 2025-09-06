@@ -3,8 +3,8 @@ package com.group.training;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.catalog.Catalog;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class Catalogcontroller {
@@ -17,20 +17,20 @@ public class Catalogcontroller {
     }
 
     @GetMapping("get-all-prod")
-    public ArrayList<Product> getAllProd() {
+    public List<Product> getAllProd() {
         return catalogService.getAllProd();
     }
 
     @PostMapping("add-product")
-    public ArrayList<Product> addProduct() {
-        return catalogService.addProduct();
+    public String addProduct(@RequestBody Product product) {
+        return catalogService.addProduct(product);
     }
-    @PutMapping("update-product")
-    public ArrayList<Product> updateProduct() {
-        return catalogService.updateProduct();
-    }
-    @DeleteMapping("delete-product")
-    public ArrayList<Product> deleteProduct() {
-        return catalogService.deleteProduct();
-    }
+//    @PutMapping("update-product")
+//    public ArrayList<Product> updateProduct(@RequestBody ProductRequest product) {
+//        return catalogService.updateProduct(product);
+//    }
+//    @DeleteMapping("delete-product")
+//    public ArrayList<Product> deleteProduct(@RequestBody ProductRequest product) {
+//        return catalogService.deleteProduct(product);
+//    }
 }
