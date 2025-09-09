@@ -1,4 +1,4 @@
-package com.group.training;
+package com.group.training.dto;
 
 public class ProductRequest {
     private String name;

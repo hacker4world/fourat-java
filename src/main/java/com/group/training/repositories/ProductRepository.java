@@ -1,5 +1,6 @@
-package com.group.training;
+package com.group.training.repositories;
 
+import com.group.training.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
